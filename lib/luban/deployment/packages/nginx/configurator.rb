@@ -31,9 +31,7 @@ module Luban
               if file?(stage_profile_path.join(mime_types_file_name))
                 profile_path.join(mime_types_file_name)
               else
-                #Pathname.new('conf').join(mime_types_file_name)
                 current_path.join('conf').join(mime_types_file_name)
-                #install_path.join('conf').join(mime_types_file_name)
               end
           end
 
