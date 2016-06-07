@@ -1,0 +1,15 @@
+# Monit control file for Nginx
+
+# Environment: <%= env_name %>
+# Revision: <%= revision %>
+# Created at <%= now %>
+
+<% nginx_command = "#{bin_path.join('nginx')} -c #{control_file_path}" %>
+check process <%= service_entry %>
+  with pidfile <%= pid_file_path %>
+  start program = "/bin/bash -c 'sleep 1; <%= nginx_command %>'"
+  stop program = "/bin/bash -c '<%= "#{nginx_command} -s stop" %>'"
+  if totalmem is greater than 10.0 MB for 40 cycles then restart
+  if failed port 8080 for 3 times within 6 cycles then restart
+  if cpu is greater than 80% for 20 cycles then alert
+  if loadavg(5min) greater than 10 for 40 cycles then restart
