@@ -6,7 +6,7 @@ module Luban
       class Pcre < Luban::Deployment::Package::Base
         class Installer < Luban::Deployment::Package::Installer
           def pcre_executable
-            @default_executable ||= bin_path.join('pcre-config')
+            @pcre_executable ||= bin_path.join('pcre-config')
           end
 
           def source_repo
