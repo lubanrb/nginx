@@ -1,9 +1,5 @@
 # Monit control file for Nginx
 
-# Environment: <%= env_name %>
-# Revision: <%= revision %>
-# Created at <%= now %>
-
 check process <%= service_entry %>
   with pidfile <%= pid_file_path %>
   start program = "/bin/bash -c 'sleep 1; <%= start_command %>'"
