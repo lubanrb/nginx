@@ -3,17 +3,33 @@ module Luban
     module Packages
       class Nginx
         class Controller < Luban::Deployment::Service::Controller
-          include Configurator::Paths
+          module Commands
+            def self.included(base)
+              base.define_executable 'nginx'
+            end
 
-          default_executable 'nginx'
+            def bin_path
+              @bin_path ||= install_path.join('sbin')
+            end
 
-          def nginx_command
-            @nginx_command ||= "#{nginx_executable} -c #{control_file_path}"
+            def nginx_command
+              @nginx_command ||= "#{nginx_executable} -c #{control_file_path}"
+            end
+
+            alias_method :process_pattern, :nginx_command
+            alias_method :start_command, :nginx_command
+
+            def stop_command
+              @stop_command ||= "#{nginx_command} -s stop"
+            end
           end
-          alias_method :process_pattern, :nginx_command
 
-          def config_test
-            update_result config_test!
+          include Commands
+
+          %w(config_test reload_process reopen_logs).each do |method|
+            define_method(method) do
+              update_result send("#{method}!")
+            end
           end
 
           def quit_process
@@ -22,9 +38,9 @@ module Luban
               return
             end
 
+            unmonitor_process
             output = quit_process!
             if check_until { process_stopped? }
-              unmonitor_process
               update_result "Gracefully stop #{package_full_name}: [OK] #{output}"
             else
               remove_orphaned_pid_file
@@ -33,32 +49,14 @@ module Luban
             end
           end
 
-          def before_quit; unmonitor_process; end
-
-          def reload_process
-            update_result reload_process!
-          end
-
-          def reopen_logs
-            update_result reopen_logs!
-          end
-
           protected
 
           def config_test!
             capture("#{nginx_command} -t 2>&1")
           end
 
-          def start_process!
-            capture("#{nginx_command} 2>&1")
-          end
-
           def quit_process!
             capture("#{nginx_command} -s quit 2>&1")
-          end
-
-          def stop_process!
-            capture("#{nginx_command} -s stop 2>&1")
           end
 
           def reload_process!

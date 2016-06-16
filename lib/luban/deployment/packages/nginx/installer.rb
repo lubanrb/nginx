@@ -3,9 +3,7 @@ module Luban
     module Packages
       class Nginx
         class Installer < Luban::Deployment::Service::Installer
-          include Configurator::Paths
-
-          default_executable 'nginx'
+          include Controller::Commands
 
           def source_repo
             @source_repo ||= "http://nginx.org"

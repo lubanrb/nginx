@@ -3,13 +3,7 @@ module Luban
     module Packages
       class Nginx
         class Configurator < Luban::Deployment::Service::Configurator
-          module Paths
-            def bin_path
-              @bin_path ||= install_path.join('sbin')
-            end
-          end
-
-          include Paths
+          include Controller::Commands
 
           def error_log_file_path
             @error_log_file_path ||= log_path.join(error_log_file_name)
