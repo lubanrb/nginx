@@ -16,7 +16,10 @@ module Luban
               @nginx_command ||= "#{nginx_executable} -c #{control_file_path}"
             end
 
-            alias_method :process_pattern, :nginx_command
+            def process_pattern
+              @process_pattern ||= "^nginx: master process #{nginx_command}"
+            end
+            
             alias_method :start_command, :nginx_command
 
             def stop_command
