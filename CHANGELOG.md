@@ -1,5 +1,11 @@
 # Change log
 
+## Version 0.1.2 (Jun 17, 2016)
+
+Bug fixes:
+  * Corrected the package major version
+  * Used https instead of http when downloading PCRE source package
+
 ## Version 0.1.1 (Jun 16, 2016)
 
 Minor enhancements:
