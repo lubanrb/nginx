@@ -10,11 +10,11 @@ module Luban
           end
 
           def source_repo
-            @source_repo ||= "http://sourceforge.net"
+            @source_repo ||= "https://sourceforge.net"
           end
 
           def source_url_root
-            @source_url_root ||= "projects/pcre/files/pcre/#{@package_major_version}"
+            @source_url_root ||= "projects/pcre/files/pcre/#{package_major_version}"
           end
 
           def installed?
