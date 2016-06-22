@@ -10,7 +10,7 @@ module Luban
         end
 
         def default_templates_path
-          @default_templates_path ||= Pathname.new(__FILE__).dirname.join('templates')).realpath
+          @default_templates_path ||= Pathname.new(__FILE__).dirname.join('templates').realpath
         end
 
         %i(config_test quit_process reload_process reopen_logs).each do |action|
