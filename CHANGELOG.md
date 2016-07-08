@@ -1,5 +1,10 @@
 # Change log
 
+## Version 0.1.4 (Jul 08, 2016)
+
+Minor enhancements:
+  * Refactored method #default_templates_path in a DRY way
+
 ## Version 0.1.3 (Jun 17, 2016)
 
 Bug fixes:
