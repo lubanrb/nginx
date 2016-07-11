@@ -1,5 +1,10 @@
 # Change log
 
+## Version 0.1.5 (Jul 11, 2016)
+
+Minor enhancements:
+  * Changed monit reboot mode to laststate
+
 ## Version 0.1.4 (Jul 08, 2016)
 
 Minor enhancements:
