@@ -9,8 +9,9 @@ http {
   include <%= mime_types_file_path %>;
   include <%= profile_path.join('nginx.http.conf') %>;
   include <%= profile_path.join('nginx.http.*.conf') %>;
+  <%- if proxy? -%>
+  include <%= proxy_control_file_path %>;
+  <%- end -%>
 
   access_log <%= access_log_file_path %> main;
 }
-
-

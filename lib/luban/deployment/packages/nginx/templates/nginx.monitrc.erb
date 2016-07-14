@@ -6,6 +6,10 @@ check process <%= service_entry %>
   start program = "/bin/bash -c 'sleep 1; <%= start_command %>'"
   stop program = "/bin/bash -c '<%= stop_command %>'"
   if totalmem is greater than 10.0 MB for 40 cycles then restart
+  <%- if proxy? -%>
+  if failed port <%= proxy_app.port %> for 4 times within 8 cycles then restart
+  <%- else -%>
   if failed port 8080 for 4 times within 8 cycles then restart
+  <%- end -%>
   if cpu is greater than 80% for 20 cycles then alert
   if loadavg(5min) greater than 10 for 40 cycles then restart

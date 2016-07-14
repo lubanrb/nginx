@@ -32,6 +32,20 @@ module Luban
           def mime_types_file_name
             @mime_types_file_name ||= 'mime.types'
           end
+
+          def proxy_app; task.opts.proxy_app; end
+          def proxy_to; task.opts.proxy_to end
+          def proxy?; !!proxy_to; end
+
+          def proxy_control_file_path
+            @proxy_control_file_path ||= 
+              project_path.join(proxy_to.to_s, 'shared', 'profile', proxy_to.to_s).
+                           join(proxy_control_file_name)
+          end
+
+          def proxy_control_file_name
+            @proxy_control_file_name ||= "nginx.http.proxy.conf"
+          end
         end
       end
     end

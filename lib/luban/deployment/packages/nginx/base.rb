@@ -19,6 +19,12 @@ module Luban
 
         protected
 
+        def compose_task_options(opts)
+          super.tap do |opts|
+            opts.merge!(proxy_app: find_application(opts[:proxy_to])) if opts[:proxy_to]
+          end
+        end
+
         def setup_install_tasks
           super
           commands[:install].option :pcre, "PCRE version"
