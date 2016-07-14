@@ -1,5 +1,10 @@
 # Change log
 
+## Version 0.1.6 (Jul 14, 2016)
+
+New features:
+  * Supported proxy configuration to Rack-based application
+
 ## Version 0.1.5 (Jul 11, 2016)
 
 Minor enhancements:
