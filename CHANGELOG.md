@@ -1,5 +1,11 @@
 # Change log
 
+## Version 0.1.8 (Aug 02, 2016)
+
+Bug fixes:
+  * Prefixed the proxy control file from proxy app properly
+  * Updated the gem depdendency on Luban to version 0.6.7
+
 ## Version 0.1.7 (Jul 27, 2016)
 
 Bug fixes:
