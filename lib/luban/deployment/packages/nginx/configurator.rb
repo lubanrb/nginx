@@ -44,7 +44,7 @@ module Luban
           end
 
           def proxy_control_file_name
-            @proxy_control_file_name ||= "nginx.http.proxy.conf"
+            @proxy_control_file_name ||= "#{proxy_app.web_server[:name]}.nginx.http.proxy.conf"
           end
         end
       end
