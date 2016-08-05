@@ -9,15 +9,15 @@ module Luban
           end
         end
 
-        def default_templates_path
-          @default_templates_path ||= base_templates_path(__FILE__)
-        end
-
         %i(config_test quit_process reload_process reopen_logs).each do |action|
           service_action action, dispatch_to: :controller
         end
 
         protected
+
+        def include_default_templates_path
+          default_templates_paths.unshift(base_templates_path(__FILE__))
+        end
 
         def compose_task_options(opts)
           super.tap do |opts|
