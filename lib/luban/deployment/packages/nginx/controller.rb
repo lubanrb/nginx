@@ -55,19 +55,19 @@ module Luban
           protected
 
           def config_test!
-            capture("#{nginx_command} -t 2>&1")
+            capture(compose_command("#{nginx_command} -t"))
           end
 
           def quit_process!
-            capture("#{nginx_command} -s quit 2>&1")
+            capture(compose_command("#{nginx_command} -s quit"))
           end
 
           def reload_process!
-            capture("#{nginx_command} -s reload 2>&1")
+            capture(compose_command("#{nginx_command} -s reload"))
           end
 
           def reopen_logs!
-            capture("#{nginx_command} -s reopen 2>&1")
+            capture(compose_command("#{nginx_command} -s reopen"))
           end
         end
       end
