@@ -1,5 +1,11 @@
 # Change log
 
+## Version 0.2.1 (Sept 01, 2016)
+
+Bug fixes:
+  * Used 'app' as the correct profile name for the applicaiton that is being proxied to
+  * Bump up gem dependency of Luban to version 0.7.9
+
 ## Version 0.2.0 (Aug 18, 2016)
 
 Minor enhancements:
