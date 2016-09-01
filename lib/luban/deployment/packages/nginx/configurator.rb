@@ -39,7 +39,7 @@ module Luban
 
           def proxy_control_file_path
             @proxy_control_file_path ||= 
-              project_path.join(proxy_to.to_s, 'shared', 'profile', proxy_to.to_s).
+              project_path.join(proxy_to.to_s, 'shared', 'profile', 'app').
                            join(proxy_control_file_name)
           end
 
