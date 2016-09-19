@@ -20,10 +20,12 @@ module Luban
               @process_pattern ||= "^nginx: master process #{nginx_command}"
             end
             
-            alias_method :start_command, :nginx_command
+            def start_command
+              @start_command ||= shell_command(nginx_command)
+            end
 
             def stop_command
-              @stop_command ||= "#{nginx_command} -s stop"
+              @stop_command ||= shell_command("#{nginx_command} -s stop")
             end
           end
 
@@ -55,19 +57,19 @@ module Luban
           protected
 
           def config_test!
-            capture(compose_command("#{nginx_command} -t"))
+            capture(shell_command("#{nginx_command} -t"))
           end
 
           def quit_process!
-            capture(compose_command("#{nginx_command} -s quit"))
+            capture(shell_command("#{nginx_command} -s quit"))
           end
 
           def reload_process!
-            capture(compose_command("#{nginx_command} -s reload"))
+            capture(shell_command("#{nginx_command} -s reload"))
           end
 
           def reopen_logs!
-            capture(compose_command("#{nginx_command} -s reopen"))
+            capture(shell_command("#{nginx_command} -s reopen"))
           end
         end
       end

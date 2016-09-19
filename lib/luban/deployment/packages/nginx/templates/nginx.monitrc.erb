@@ -3,8 +3,8 @@
 check process <%= service_entry %>
   with pidfile <%= pid_file_path %>
   onreboot laststate
-  start program = "/bin/bash -c 'sleep 1; <%= compose_command(start_command) %>'"
-  stop program = "/bin/bash -c '<%= compose_command(stop_command) %>'"
+  start program = "/bin/bash -c 'sleep 1; <%= start_command %>'"
+  stop program = "/bin/bash -c '<%= stop_command %>'"
   if totalmem is greater than 10.0 MB for 40 cycles then restart
   <%- if proxy? -%>
   if failed port <%= proxy_app.port %> for 4 times within 8 cycles then restart
