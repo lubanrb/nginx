@@ -25,33 +25,35 @@ module Luban
           end
         end
 
-        def setup_install_tasks
+        def setup_provision_tasks
           super
-          commands[:install].option :pcre, "PCRE version"
-          commands[:install].option :openssl, "OpenSSL version"
+          provision_tasks[:install].option :pcre, "PCRE version"
+          provision_tasks[:install].option :openssl, "OpenSSL version"
         end
 
         def setup_control_tasks
           super
 
-          task :config_test do
-            desc "Syntax check on config file"
-            action! :config_test
-          end
+          commands[:control].alter do
+            task :config_test do
+              desc "Syntax check on config file"
+              action! :config_test
+            end
 
-          task :quit do
-            desc "Stop process gracefully"
-            action! :quit_process
-          end
+            task :quit do
+              desc "Stop process gracefully"
+              action! :quit_process
+            end
 
-          task :reload do
-            desc "Reload process"
-            action! :reload_process
-          end
+            task :reload do
+              desc "Reload process"
+              action! :reload_process
+            end
 
-          task :reopen do
-            desc "Reopen log files"
-            action! :reopen_logs
+            task :reopen do
+              desc "Reopen log files"
+              action! :reopen_logs
+            end
           end
         end
       end
