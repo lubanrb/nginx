@@ -5,7 +5,7 @@ module Luban
         apply_to :all do
           before_install do
             depend_on 'pcre', version: '8.38'
-            depend_on 'openssl', version: '1.0.2h'
+            depend_on 'openssl', version: '1.0.2j'
           end
         end
 
