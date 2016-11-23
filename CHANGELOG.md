@@ -1,5 +1,10 @@
 # Change log
 
+## Version 0.2.6 (Nov 24, 2016)
+
+Minor enhancements:
+  * Upgraded dependency of OpenSSL to version 1.0.2j
+
 ## Version 0.2.5 (Oct 19, 2016)
 
 Minor enhancements:
