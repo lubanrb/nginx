@@ -5,7 +5,7 @@ require 'luban/deployment/packages/nginx/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "luban-nginx"
-  spec.version       = Luban::Deployment::Packages::Nginx::VERSION
+  spec.version       = Luban::Deployment::Packages::NGINX_VERSION
   spec.authors       = ["Rubyist Chi"]
   spec.email         = ["rubyist.chi@gmail.com"]
 
